@@ -210,6 +210,14 @@ button {
   border: 0;
   cursor: pointer;
 }
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
 
 /* ---- Screen system ----
    Gate class lands only via the head bootstrap script. Without it, the
@@ -436,7 +444,7 @@ h3 {
   padding-bottom: 2px;
   border-bottom: 2px solid transparent;
 }
-.nav-icon { display: none; width: 16px; height: 16px; }
+.nav-icon { display: none; width: 32px; height: 32px; }
 .nav-links a:hover {
   color: var(--accent);
 }
@@ -445,19 +453,34 @@ h3 {
   border-bottom-color: var(--accent);
 }
 @media (max-width: 479px) {
-  .site-nav .container { gap: var(--sp-3); }
-  .nav-links { gap: var(--sp-2); }
-}
-@media (max-width: 359px) {
-  .nav-links { gap: var(--sp-1); }
+  html.screens body {
+    grid-template-rows: 44px 1fr calc(48px + env(safe-area-inset-bottom));
+  }
+  .site-nav { height: 44px; }
+  .nav-links {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 50;
+    height: calc(48px + env(safe-area-inset-bottom));
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-inline: max(var(--sp-4), env(safe-area-inset-left))
+                    max(var(--sp-4), env(safe-area-inset-right));
+    justify-content: space-around;
+    align-items: center;
+    gap: 0;
+    background: var(--surface-raised);
+    border-top: 2px solid var(--frame);
+  }
   .nav-links a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 44px;
-    height: 44px;
+    width: 44px; height: 44px;
     padding-bottom: 0;
+    border-bottom: 0;
+    border-top: 2px solid transparent;
   }
+  .nav-links a[aria-current="page"] { border-top-color: var(--accent); }
   .nav-icon { display: block; }
   .nav-links .nav-label {
     position: absolute;
@@ -466,6 +489,7 @@ h3 {
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
   }
+  html:not(.screens) body { padding-bottom: calc(48px + env(safe-area-inset-bottom)); }
 }
 .nav-actions {
   display: flex;
@@ -978,10 +1002,49 @@ h3 {
   text-decoration: none;
   display: inline-block;
   max-width: 100%;
-  overflow-wrap: anywhere;
+  white-space: nowrap;
 }
 .footer-email:hover {
   color: var(--accent);
+}
+@media (max-width: 479px) {
+  .footer-email {
+    font-size: 16px;
+  }
+}
+.footer-email-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-3);
+}
+.copy-email {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--frame);
+  background: var(--surface-raised);
+  color: var(--ink-primary);
+  font-family: var(--font-mono);
+  font-size: var(--t-label);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+}
+.copy-email:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.copy-email.is-copied {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+@media (max-width: 479px) {
+  .copy-email {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0 12px;
+  }
 }
 .footer-links {
   margin-top: var(--sp-5);

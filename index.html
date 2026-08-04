@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Shubham Paithankar — Full-Stack Engineer</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 fill=%27%231A1C2C%27/%3E%3Ctext x=%2716%27 y=%2722%27 font-family=%27monospace%27 font-size=%2716%27 font-weight=%27bold%27 fill=%27%23FFCD75%27 text-anchor=%27middle%27%3ESP%3C/text%3E%3C/svg%3E">
 <meta name="description" content="Full-stack engineer. TypeScript, Node, React, Python. Ships production code with AI-native tooling. Based in Nagpur/Pune, India." />
@@ -50,7 +50,7 @@
     <div class="container">
       <span class="eyebrow">Full-Stack Engineer &middot; Nagpur/Pune, IN</span>
       <h1 id="hero-heading" tabindex="-1">Shubham<br />Paithankar</h1>
-      <p class="lead">TypeScript, Node, React, Python. Ships production code with AI-native tooling. Likes to tinker, simplify, and automate. Currently at Guestara.</p>
+      <p class="lead">Ships production code with AI-native tooling. Likes to tinker, simplify, upgrade, and automate. Currently at Guestara.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
         <div class="link-row">
@@ -282,7 +282,10 @@
   </div>
   <div class="screen-body" role="region" aria-label="Contact" tabindex="0">
     <div class="container">
-      <a class="footer-email" href="mailto:shubhampaithankar65@gmail.com">shubhampaithankar65@gmail.com</a>
+      <div class="footer-email-row">
+        <a class="footer-email" href="mailto:shubhampaithankar65@gmail.com">shubhampaithankar65@gmail.com</a>
+        <button class="copy-email" type="button" aria-live="polite" data-copy="shubhampaithankar65@gmail.com">Copy<span class="visually-hidden"> email address</span></button>
+      </div>
       <div class="footer-links">
         <a class="link-inline ext" href="https://github.com/shubhampaithankar" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a class="link-inline ext" href="https://linkedin.com/in/shubham-paithankar/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -322,6 +325,26 @@
         localStorage.setItem("theme", next);
       } catch (e) {}
       reflect();
+    });
+  })();
+
+  // Copy-to-clipboard for the footer email. Falls back silently if the API is unavailable.
+  (function () {
+    var copyButton = document.querySelector(".copy-email");
+    if (!copyButton) return;
+    if (!navigator.clipboard) {
+      copyButton.hidden = true;
+      return;
+    }
+    copyButton.addEventListener("click", function () {
+      navigator.clipboard.writeText(copyButton.dataset.copy).then(function () {
+        copyButton.classList.add("is-copied");
+        copyButton.firstChild.nodeValue = "Copied";
+        setTimeout(function () {
+          copyButton.classList.remove("is-copied");
+          copyButton.firstChild.nodeValue = "Copy";
+        }, 1600);
+      });
     });
   })();
 
