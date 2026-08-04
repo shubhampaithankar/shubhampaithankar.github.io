@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Shubham Paithankar — Full-Stack Engineer</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 fill=%27%231A1C2C%27/%3E%3Ctext x=%2716%27 y=%2722%27 font-family=%27monospace%27 font-size=%2716%27 font-weight=%27bold%27 fill=%27%23FFCD75%27 text-anchor=%27middle%27%3ESP%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 fill=%27%231A1C2C%27/%3E%3Cpath fill=%27%23FFCD75%27 d=%27M8 4h16v4H8zM6 8h4v6H6zM8 14h16v4H8zM22 18h4v6h-4zM8 24h16v4H8z%27/%3E%3C/svg%3E">
 <meta name="description" content="Full-stack engineer. TypeScript, Node, React, Python. Ships production code with AI-native tooling. Based in Nagpur/Pune, India." />
 <link rel="preload" href="assets/fonts/chakra-petch-700.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="assets/fonts/ibm-plex-mono-400.woff2" as="font" type="font/woff2" crossorigin />
@@ -29,7 +29,7 @@
 
 <header class="site-nav" id="site-nav">
   <div class="container">
-    <a class="wordmark" href="#top">SP</a>
+    <a class="wordmark" href="#top"><svg class="wordmark-glyph" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><path fill="currentColor" d="M4 2h8v2H4zM3 4h2v3H3zM4 7h8v2H4zM11 9h2v3h-2zM4 12h8v2H4z"/></svg><span class="visually-hidden">Shubham Paithankar, home</span></a>
     <nav class="nav-links" aria-label="Section navigation">
       <a href="#work"><svg class="nav-icon" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><path fill="currentColor" d="M7 0h2v9H7zM3 9h10v2H3zM7 11h2v3H7zM6 14h4v2H6z"/></svg><span class="nav-label">Work</span></a>
       <a href="#projects"><svg class="nav-icon" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><path fill="currentColor" d="M2 3h12v4H2zM2 7h2v6H2zM12 7h2v6h-2zM2 11h12v2H2zM7 7h2v3H7z"/></svg><span class="nav-label">Projects</span></a>
@@ -37,6 +37,10 @@
       <a href="#contact"><svg class="nav-icon" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><path fill="currentColor" d="M0 3h16v2H0zM0 11h16v2H0zM0 5h2v6H0zM14 5h2v6h-2zM4 6h8v2H4zM7 9h2v2H7z"/></svg><span class="nav-label">Contact</span></a>
     </nav>
     <div class="nav-actions">
+      <button class="music-toggle" id="music-toggle" type="button" aria-pressed="false" aria-label="Background music" hidden>
+        <svg class="icon-music-off" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><path fill="currentColor" d="M0 6h4v4H0zM4 4h2v8H4zM6 2h2v12H6zM10 4h2v2h-2zM14 4h2v2h-2zM12 6h2v2h-2zM10 8h2v2h-2zM14 8h2v2h-2z"/></svg>
+        <svg class="icon-music-on" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><path fill="currentColor" d="M0 6h4v4H0zM4 4h2v8H4zM6 2h2v12H6zM10 6h2v4h-2zM14 4h2v8h-2z"/></svg>
+      </button>
       <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Toggle dark mode">
         <svg class="icon-sun" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="6" y="0" width="4" height="2" fill="currentColor"/><rect x="2" y="2" width="2" height="2" fill="currentColor"/><rect x="6" y="2" width="4" height="2" fill="currentColor"/><rect x="12" y="2" width="2" height="2" fill="currentColor"/><rect x="4" y="4" width="8" height="2" fill="currentColor"/><rect x="0" y="6" width="16" height="2" fill="currentColor"/><rect x="0" y="8" width="16" height="2" fill="currentColor"/><rect x="4" y="10" width="8" height="2" fill="currentColor"/><rect x="2" y="12" width="2" height="2" fill="currentColor"/><rect x="6" y="12" width="4" height="2" fill="currentColor"/><rect x="12" y="12" width="2" height="2" fill="currentColor"/><rect x="6" y="14" width="4" height="2" fill="currentColor"/></svg>
         <svg class="icon-moon" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="6" y="0" width="4" height="2" fill="currentColor"/><rect x="4" y="2" width="8" height="2" fill="currentColor"/><rect x="2" y="4" width="12" height="2" fill="currentColor"/><rect x="2" y="6" width="12" height="2" fill="currentColor"/><rect x="2" y="8" width="12" height="2" fill="currentColor"/><rect x="2" y="10" width="12" height="2" fill="currentColor"/><rect x="4" y="12" width="8" height="2" fill="currentColor"/><rect x="6" y="14" width="4" height="2" fill="currentColor"/><rect x="8" y="0" width="4" height="2" style="fill:var(--surface-raised)"/><rect x="6" y="2" width="8" height="2" style="fill:var(--surface-raised)"/><rect x="6" y="4" width="8" height="2" style="fill:var(--surface-raised)"/><rect x="6" y="6" width="8" height="2" style="fill:var(--surface-raised)"/><rect x="6" y="8" width="8" height="2" style="fill:var(--surface-raised)"/><rect x="8" y="10" width="4" height="2" style="fill:var(--surface-raised)"/></svg>
@@ -345,6 +349,68 @@
           copyButton.firstChild.nodeValue = "Copy";
         }, 1600);
       });
+    });
+  })();
+
+  // Background music: opt-in toggle, low volume, remembered preference.
+  // The button stays hidden unless assets/bgm.mp3 actually exists, so the
+  // site works unchanged until a file is dropped in.
+  (function () {
+    var toggle = document.getElementById("music-toggle");
+    if (!toggle) return;
+    var audio = null;
+    var stored = null;
+    try { stored = localStorage.getItem("bgm"); } catch (e) {}
+
+    function ensureAudio() {
+      if (!audio) {
+        audio = new Audio("assets/bgm.mp3");
+        audio.loop = true;
+        audio.volume = 0.25;
+      }
+      return audio;
+    }
+    function reflect(on) {
+      toggle.setAttribute("aria-pressed", String(on));
+    }
+
+    // Only show the control if the file is really there.
+    fetch("assets/bgm.mp3", { method: "HEAD" }).then(function (res) {
+      if (!res.ok) return;
+      toggle.hidden = false;
+      // A remembered ON is a preference, not autoplay: the icon shows the
+      // pressed state and playback starts on the first interaction anywhere.
+      if (stored === "on") {
+        reflect(true);
+        var startOnce = function (event) {
+          removeStart();
+          // If the first interaction is the toggle itself, let its click
+          // handler decide instead of racing play against pause.
+          if (toggle.contains(event.target)) return;
+          ensureAudio().play().catch(function () { reflect(false); });
+        };
+        var removeStart = function () {
+          document.removeEventListener("pointerdown", startOnce);
+          document.removeEventListener("keydown", startOnce);
+        };
+        document.addEventListener("pointerdown", startOnce);
+        document.addEventListener("keydown", startOnce);
+      }
+    }).catch(function () {});
+
+    toggle.addEventListener("click", function () {
+      var on = toggle.getAttribute("aria-pressed") !== "true";
+      reflect(on);
+      try { localStorage.setItem("bgm", on ? "on" : "off"); } catch (e) {}
+      if (on) ensureAudio().play().catch(function () { reflect(false); });
+      else if (audio) audio.pause();
+    });
+
+    // Never play into a backgrounded tab.
+    document.addEventListener("visibilitychange", function () {
+      if (!audio) return;
+      if (document.hidden) audio.pause();
+      else if (toggle.getAttribute("aria-pressed") === "true") audio.play().catch(function () {});
     });
   })();
 

@@ -411,19 +411,16 @@ h3 {
   width: 100%;
 }
 .wordmark {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  text-decoration: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 6px 8px;
-  border: 2px solid var(--frame);
+  width: 44px;
+  height: 44px;
+  flex: none;
   color: var(--ink-primary);
 }
+.wordmark:hover { color: var(--accent); }
+.wordmark svg { width: 32px; height: 32px; }
 .nav-links {
   display: flex;
   gap: var(--sp-4);
@@ -490,6 +487,11 @@ h3 {
     white-space: nowrap;
   }
   html:not(.screens) body { padding-bottom: calc(48px + env(safe-area-inset-bottom)); }
+  .music-toggle::after {
+    content: "";
+    position: absolute;
+    inset: -6px;
+  }
 }
 .nav-actions {
   display: flex;
@@ -535,6 +537,40 @@ h3 {
   :root[data-theme="light"] .theme-toggle .icon-moon {
     display: none;
   }
+}
+
+.music-toggle {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--frame);
+  flex: none;
+}
+.music-toggle[hidden] {
+  display: none;
+}
+.music-toggle:hover {
+  border-color: var(--accent-2);
+}
+.music-toggle svg {
+  width: 16px;
+  height: 16px;
+}
+.music-toggle .icon-music-on {
+  display: none;
+}
+.music-toggle[aria-pressed="true"] .icon-music-on {
+  display: block;
+}
+.music-toggle[aria-pressed="true"] .icon-music-off {
+  display: none;
+}
+.music-toggle[aria-pressed="true"] {
+  color: var(--accent);
+  border-color: var(--accent);
 }
 
 /* ---- Hero (title screen) ---- */
