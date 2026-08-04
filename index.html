@@ -4,10 +4,10 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Shubham Paithankar — Full-Stack Engineer</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 fill=%27%2316181C%27/%3E%3Ctext x=%2716%27 y=%2722%27 font-family=%27monospace%27 font-size=%2716%27 font-weight=%27bold%27 fill=%27%23E9A23B%27 text-anchor=%27middle%27%3ESP%3C/text%3E%3C/svg%3E">
-<meta name="description" content="Full-stack engineer building check-in, payment, identity verification, and messaging systems. Based in Nagpur/Pune, India." />
-<link rel="preload" href="assets/fonts/ibm-plex-sans-condensed-600.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="preload" href="assets/fonts/ibm-plex-sans-400.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 fill=%27%231A1C2C%27/%3E%3Ctext x=%2716%27 y=%2722%27 font-family=%27monospace%27 font-size=%2716%27 font-weight=%27bold%27 fill=%27%23FFCD75%27 text-anchor=%27middle%27%3ESP%3C/text%3E%3C/svg%3E">
+<meta name="description" content="Full-stack engineer. TypeScript, Node, React, Python. Ships production code with AI-native tooling. Based in Nagpur/Pune, India." />
+<link rel="preload" href="assets/fonts/chakra-petch-700.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="assets/fonts/ibm-plex-mono-400.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="assets/styles.css" />
 <script>
   (function () {
@@ -19,34 +19,38 @@
     } catch (e) {}
   })();
 </script>
+<script>
+  document.documentElement.classList.add("screens");
+  document.documentElement.dataset.screen = (location.hash || "#top").slice(1);
+</script>
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
+<a class="skip-link" href="#hero-heading">Skip to content</a>
 
 <header class="site-nav" id="site-nav">
   <div class="container">
     <a class="wordmark" href="#top">SP</a>
     <nav class="nav-links" aria-label="Section navigation">
-      <a href="#work">Work</a>
-      <a href="#projects">Projects</a>
-      <a href="#stack">Stack</a>
-      <a href="#contact">Contact</a>
+      <a href="#work"><svg class="nav-icon" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><path fill="currentColor" d="M7 0h2v9H7zM3 9h10v2H3zM7 11h2v3H7zM6 14h4v2H6z"/></svg><span class="nav-label">Work</span></a>
+      <a href="#projects"><svg class="nav-icon" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><path fill="currentColor" d="M2 3h12v4H2zM2 7h2v6H2zM12 7h2v6h-2zM2 11h12v2H2zM7 7h2v3H7z"/></svg><span class="nav-label">Projects</span></a>
+      <a href="#stack"><svg class="nav-icon" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><path fill="currentColor" d="M3 2h10v2H3zM3 12h10v2H3zM3 2h2v12H3zM11 2h2v12h-2zM6 6h4v4H6z"/></svg><span class="nav-label">Stack</span></a>
+      <a href="#contact"><svg class="nav-icon" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><path fill="currentColor" d="M0 3h16v2H0zM0 11h16v2H0zM0 5h2v6H0zM14 5h2v6h-2zM4 6h8v2H4zM7 9h2v2H7z"/></svg><span class="nav-label">Contact</span></a>
     </nav>
     <div class="nav-actions">
       <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Toggle dark mode">
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="6" y="0" width="4" height="2" fill="currentColor"/><rect x="2" y="2" width="2" height="2" fill="currentColor"/><rect x="6" y="2" width="4" height="2" fill="currentColor"/><rect x="12" y="2" width="2" height="2" fill="currentColor"/><rect x="4" y="4" width="8" height="2" fill="currentColor"/><rect x="0" y="6" width="16" height="2" fill="currentColor"/><rect x="0" y="8" width="16" height="2" fill="currentColor"/><rect x="4" y="10" width="8" height="2" fill="currentColor"/><rect x="2" y="12" width="2" height="2" fill="currentColor"/><rect x="6" y="12" width="4" height="2" fill="currentColor"/><rect x="12" y="12" width="2" height="2" fill="currentColor"/><rect x="6" y="14" width="4" height="2" fill="currentColor"/></svg>
+        <svg class="icon-moon" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="6" y="0" width="4" height="2" fill="currentColor"/><rect x="4" y="2" width="8" height="2" fill="currentColor"/><rect x="2" y="4" width="12" height="2" fill="currentColor"/><rect x="2" y="6" width="12" height="2" fill="currentColor"/><rect x="2" y="8" width="12" height="2" fill="currentColor"/><rect x="2" y="10" width="12" height="2" fill="currentColor"/><rect x="4" y="12" width="8" height="2" fill="currentColor"/><rect x="6" y="14" width="4" height="2" fill="currentColor"/><rect x="8" y="0" width="4" height="2" style="fill:var(--surface-raised)"/><rect x="6" y="2" width="8" height="2" style="fill:var(--surface-raised)"/><rect x="6" y="4" width="8" height="2" style="fill:var(--surface-raised)"/><rect x="6" y="6" width="8" height="2" style="fill:var(--surface-raised)"/><rect x="6" y="8" width="8" height="2" style="fill:var(--surface-raised)"/><rect x="8" y="10" width="4" height="2" style="fill:var(--surface-raised)"/></svg>
       </button>
     </div>
   </div>
 </header>
 
-<main id="main">
-  <section class="hero" id="top" aria-labelledby="hero-heading">
+<main>
+  <section class="hero screen" id="top" aria-labelledby="hero-heading">
     <div class="container">
       <span class="eyebrow">Full-Stack Engineer &middot; Nagpur/Pune, IN</span>
-      <h1 id="hero-heading">Shubham<br />Paithankar</h1>
-      <p class="lead">I build the parts of products that touch money and identity — check-in and payment flows, KYC/OCR verification, multi-channel messaging.</p>
+      <h1 id="hero-heading" tabindex="-1">Shubham<br />Paithankar</h1>
+      <p class="lead">TypeScript, Node, React, Python. Ships production code with AI-native tooling. Likes to tinker, simplify, and automate. Currently at Guestara.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
         <div class="link-row">
@@ -59,219 +63,239 @@
         <span class="availability-dot" aria-hidden="true"></span>
         Open to full-stack roles · worldwide
         <span class="sep">&middot;</span>
-        TypeScript &middot; React &middot; Node &middot; Java
+        TypeScript &middot; Node &middot; React &middot; Python
+        <span class="blink" aria-hidden="true">&#9660;</span>
       </p>
     </div>
   </section>
 
-  <section id="work" aria-labelledby="work-heading">
-    <div class="container">
+  <section class="screen" id="work" aria-labelledby="work-heading">
+    <div class="container screen-head">
       <span class="eyebrow">02 — Work</span>
-      <h2 id="work-heading">Experience</h2>
+      <h2 id="work-heading" tabindex="-1">Experience</h2>
+    </div>
+    <div class="screen-body" role="region" aria-label="Work history" tabindex="0">
+      <div class="container">
+        <div class="work-layout">
+          <!-- ponytail: year-rule ticks are visually-plausible approximations aligned
+               to card order, not JS-measured pixel positions; upgrade to a subgrid +
+               computed offsets if literal date-accuracy is ever required -->
+          <div class="year-rule" aria-hidden="true">
+            <div class="rule-track"></div>
+            <span class="tick" style="top: 0%"></span>
+            <span class="tick-label" style="top: 0%">NOW</span>
+            <span class="tick" style="top: 22%"></span>
+            <span class="tick-label" style="top: 22%">2025</span>
+            <span class="tick tick-boundary" style="top: 40%"></span>
+            <span class="tick-label is-boundary" style="top: 40%">2024</span>
+            <span class="tick tick-boundary" style="top: 68%"></span>
+            <span class="tick-label is-boundary" style="top: 68%">2023</span>
+            <span class="tick" style="top: 100%"></span>
+            <span class="tick-label" style="top: 100%">2022</span>
+          </div>
 
-      <div class="work-layout">
-        <!-- ponytail: year-rule ticks are visually-plausible approximations aligned
-             to card order, not JS-measured pixel positions; upgrade to a subgrid +
-             computed offsets if literal date-accuracy is ever required -->
-        <div class="year-rule" aria-hidden="true">
-          <div class="rule-track"></div>
-          <span class="tick" style="top: 0%"></span>
-          <span class="tick-label" style="top: 0%">NOW</span>
-          <span class="tick" style="top: 22%"></span>
-          <span class="tick-label" style="top: 22%">2025</span>
-          <span class="tick tick-boundary" style="top: 40%"></span>
-          <span class="tick-label is-boundary" style="top: 40%">2024</span>
-          <span class="tick tick-boundary" style="top: 68%"></span>
-          <span class="tick-label is-boundary" style="top: 68%">2023</span>
-          <span class="tick" style="top: 100%"></span>
-          <span class="tick-label" style="top: 100%">2022</span>
+          <ol class="roles">
+            <li class="role-card is-current">
+              <div class="role-body">
+                <div class="role-head">
+                  <span class="role-dot" aria-hidden="true"></span>
+                  <h3>Full Stack Engineer — Guestara</h3>
+                </div>
+                <p class="role-meta">Oct 2024 &ndash; Present &middot; Pune, India</p>
+                <p>Led the guest check-in revamp, adding upsell and integrated payment flows — 35% increase in upsell conversion.</p>
+                <div class="role-details">
+                  <a class="details-link" href="partials/role-guestara.html" hx-get="partials/role-guestara.html" hx-target="closest .role-details" hx-swap="innerHTML">Details &#8599;</a>
+                </div>
+              </div>
+              <aside class="sidenote">
+                <ul>
+                  <li>Stack: React, Next, Node, MongoDB</li>
+                  <li>UIDAI + OCR identity checks</li>
+                  <li>Unified FB/IG/LINE inbox</li>
+                </ul>
+              </aside>
+            </li>
+
+            <li class="role-card">
+              <div class="role-body">
+                <div class="role-head">
+                  <h3>Full Stack Engineer — BlobCity</h3>
+                </div>
+                <p class="role-meta">Aug 2022 &ndash; Apr 2023 &middot; Mumbai, India</p>
+                <p>Enabled real-time monitoring and remote power/GPU control for cloud-book management — cut task-completion time 66%.</p>
+                <div class="role-details">
+                  <a class="details-link" href="partials/role-blobcity.html" hx-get="partials/role-blobcity.html" hx-target="closest .role-details" hx-swap="innerHTML">Details &#8599;</a>
+                </div>
+              </div>
+              <aside class="sidenote">
+                <ul>
+                  <li>Angular, Node, Java</li>
+                  <li>Token auth hardening</li>
+                </ul>
+              </aside>
+            </li>
+
+            <li class="role-card">
+              <div class="role-body">
+                <div class="role-head">
+                  <h3>Freelance &middot; Laika AI &middot; Comprinno</h3>
+                </div>
+                <p class="role-meta">Nov 2021 &ndash; Apr 2024 &middot; three short engagements</p>
+                <p>Freelance esports platform, a Web3 Chrome extension, and an SPA internship — three short engagements.</p>
+                <div class="role-details">
+                  <a class="details-link" href="partials/role-early.html" hx-get="partials/role-early.html" hx-target="closest .role-details" hx-swap="innerHTML">Details &#8599;</a>
+                </div>
+              </div>
+              <aside class="sidenote">
+                <ul>
+                  <li>React, Node, Angular</li>
+                  <li>Docker, GitHub Actions</li>
+                </ul>
+              </aside>
+            </li>
+          </ol>
         </div>
-
-        <ol class="roles">
-          <li class="role-card is-current">
-            <div class="role-body">
-              <div class="role-head">
-                <span class="role-dot" aria-hidden="true"></span>
-                <h3>Full Stack Engineer — Guestara</h3>
-              </div>
-              <p class="role-meta">Oct 2024 &ndash; Present &middot; Pune, India</p>
-              <p>Led the guest check-in revamp, adding upsell and integrated payment flows — 35% increase in upsell conversion.</p>
-              <div class="role-details">
-                <a class="details-link" href="partials/role-guestara.html" hx-get="partials/role-guestara.html" hx-target="closest .role-details" hx-swap="innerHTML">Details &#8599;</a>
-              </div>
-            </div>
-            <aside class="sidenote">
-              <ul>
-                <li>Stack: React, Next, Node, MongoDB</li>
-                <li>UIDAI + OCR identity checks</li>
-                <li>Unified FB/IG/LINE inbox</li>
-              </ul>
-            </aside>
-          </li>
-
-          <li class="role-card">
-            <div class="role-body">
-              <div class="role-head">
-                <h3>Full Stack Engineer — BlobCity</h3>
-              </div>
-              <p class="role-meta">Aug 2022 &ndash; Apr 2023 &middot; Mumbai, India</p>
-              <p>Enabled real-time monitoring and remote power/GPU control for cloud-book management — cut task-completion time 66%.</p>
-              <div class="role-details">
-                <a class="details-link" href="partials/role-blobcity.html" hx-get="partials/role-blobcity.html" hx-target="closest .role-details" hx-swap="innerHTML">Details &#8599;</a>
-              </div>
-            </div>
-            <aside class="sidenote">
-              <ul>
-                <li>Angular, Node, Java</li>
-                <li>Token auth hardening</li>
-              </ul>
-            </aside>
-          </li>
-
-          <li class="role-card">
-            <div class="role-body">
-              <div class="role-head">
-                <h3>Freelance &middot; Laika AI &middot; Comprinno</h3>
-              </div>
-              <p class="role-meta">Nov 2021 &ndash; Apr 2024 &middot; three short engagements</p>
-              <p>Freelance esports platform, a Web3 Chrome extension, and an SPA internship — three short engagements.</p>
-              <div class="role-details">
-                <a class="details-link" href="partials/role-early.html" hx-get="partials/role-early.html" hx-target="closest .role-details" hx-swap="innerHTML">Details &#8599;</a>
-              </div>
-            </div>
-            <aside class="sidenote">
-              <ul>
-                <li>React, Node, Angular</li>
-                <li>Docker, GitHub Actions</li>
-              </ul>
-            </aside>
-          </li>
-        </ol>
       </div>
     </div>
+    <span class="more-cursor blink" aria-hidden="true">&#9660;</span>
   </section>
 
-  <section id="projects" aria-labelledby="projects-heading">
-    <div class="container">
+  <section class="screen" id="projects" aria-labelledby="projects-heading">
+    <div class="container screen-head">
       <span class="eyebrow">03 — Projects</span>
-      <h2 id="projects-heading">Projects</h2>
-      <ul class="project-grid">
-        <li class="project-card">
-          <h3><a class="title-link" href="https://github.com/shubhampaithankar/ampersand-discord-bot" target="_blank" rel="noopener noreferrer">Ampersand Discord Bot</a></h3>
-          <p>A Discord music bot on Bun and discord.js v14, streaming audio through a Lavalink pipeline with a plugin auto-discovery loader. MongoDB + Valkey cache, Dockerized, 99.9% uptime.</p>
-          <div class="tag-row">
-            <span class="tag">Bun</span>
-            <span class="tag">Lavalink</span>
-            <span class="tag">Docker</span>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/shubhampaithankar/ampersand-discord-bot" target="_blank" rel="noopener noreferrer">Repo &#8599;</a>
-          </div>
-        </li>
-        <li class="project-card">
-          <h3><a class="title-link" href="https://github.com/shubhampaithankar/auto-wellfound-python" target="_blank" rel="noopener noreferrer">auto-wellfound-python</a></h3>
-          <p>Selenium-driven Wellfound job-application automation, filtering roles by skill, seniority, and location, with DB-tracked history and emailed run reports.</p>
-          <div class="tag-row">
-            <span class="tag">Python</span>
-            <span class="tag">Selenium</span>
-            <span class="tag">CI</span>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/shubhampaithankar/auto-wellfound-python" target="_blank" rel="noopener noreferrer">Repo &#8599;</a>
-          </div>
-        </li>
-        <li class="project-card">
-          <h3><a class="title-link" href="https://github.com/shubhampaithankar/pathbin" target="_blank" rel="noopener noreferrer">pathbin</a></h3>
-          <p>Idempotent dev-machine bootstrap from a single manifest, provisioning Windows and Linux/WSL alike, with custom handlers for tools package managers don't cover well.</p>
-          <div class="tag-row">
-            <span class="tag">PowerShell</span>
-            <span class="tag">Windows</span>
-            <span class="tag">Linux</span>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/shubhampaithankar/pathbin" target="_blank" rel="noopener noreferrer">Repo &#8599;</a>
-          </div>
-        </li>
-      </ul>
+      <h2 id="projects-heading" tabindex="-1">Projects</h2>
     </div>
+    <div class="screen-body" role="region" aria-label="Projects" tabindex="0">
+      <div class="container">
+        <ul class="project-grid">
+          <li class="project-card">
+            <h3><a class="title-link" href="https://github.com/shubhampaithankar/ampersand-discord-bot" target="_blank" rel="noopener noreferrer">Ampersand Discord Bot</a></h3>
+            <p>A Discord music bot on Bun and discord.js v14, streaming audio through a Lavalink pipeline with a plugin auto-discovery loader. MongoDB + Valkey cache, Dockerized, 99.9% uptime.</p>
+            <div class="tag-row">
+              <span class="tag">Bun</span>
+              <span class="tag">Lavalink</span>
+              <span class="tag">Docker</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/shubhampaithankar/ampersand-discord-bot" target="_blank" rel="noopener noreferrer">Repo &#8599;</a>
+            </div>
+          </li>
+          <li class="project-card">
+            <h3><a class="title-link" href="https://github.com/shubhampaithankar/auto-wellfound-python" target="_blank" rel="noopener noreferrer">auto-wellfound-python</a></h3>
+            <p>Selenium-driven Wellfound job-application automation, filtering roles by skill, seniority, and location, with DB-tracked history and emailed run reports.</p>
+            <div class="tag-row">
+              <span class="tag">Python</span>
+              <span class="tag">Selenium</span>
+              <span class="tag">CI</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/shubhampaithankar/auto-wellfound-python" target="_blank" rel="noopener noreferrer">Repo &#8599;</a>
+            </div>
+          </li>
+          <li class="project-card">
+            <h3><a class="title-link" href="https://github.com/shubhampaithankar/pathbin" target="_blank" rel="noopener noreferrer">pathbin</a></h3>
+            <p>Idempotent dev-machine bootstrap from a single manifest, provisioning Windows and Linux/WSL alike, with custom handlers for tools package managers don't cover well.</p>
+            <div class="tag-row">
+              <span class="tag">PowerShell</span>
+              <span class="tag">Windows</span>
+              <span class="tag">Linux</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/shubhampaithankar/pathbin" target="_blank" rel="noopener noreferrer">Repo &#8599;</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <span class="more-cursor blink" aria-hidden="true">&#9660;</span>
   </section>
 
-  <section id="stack" aria-labelledby="stack-heading">
-    <div class="container">
+  <section class="screen" id="stack" aria-labelledby="stack-heading">
+    <div class="container screen-head">
       <span class="eyebrow">04 — Stack</span>
-      <h2 id="stack-heading">Stack</h2>
-      <dl class="stack-list">
-        <div class="stack-row">
-          <dt>Languages</dt>
-          <dd>
-            <span class="tag">TypeScript</span>
-            <span class="tag">JavaScript</span>
-            <span class="tag">Python</span>
-            <span class="tag">Java</span>
-          </dd>
-        </div>
-        <div class="stack-row">
-          <dt>Frontend</dt>
-          <dd>
-            <span class="tag">React</span>
-            <span class="tag">Next</span>
-            <span class="tag">Tailwind</span>
-          </dd>
-        </div>
-        <div class="stack-row">
-          <dt>Backend</dt>
-          <dd>
-            <span class="tag">Express</span>
-          </dd>
-        </div>
-        <div class="stack-row">
-          <dt>Data-Ops</dt>
-          <dd>
-            <span class="tag">MongoDB</span>
-            <span class="tag">Redis</span>
-            <span class="tag">Bun</span>
-            <span class="tag">Docker</span>
-            <span class="tag">GitHub Actions</span>
-          </dd>
-        </div>
-        <div class="stack-row">
-          <dt>Cloud</dt>
-          <dd>
-            <span class="tag">AWS</span>
-            <span class="tag">Netlify</span>
-            <span class="tag">Render</span>
-          </dd>
-        </div>
-        <div class="stack-row">
-          <dt>AI</dt>
-          <dd>
-            <span class="tag">Claude Code</span>
-            <span class="tag">Cursor</span>
-            <span class="tag">MCP</span>
-            <span class="tag">Agentic workflows</span>
-          </dd>
-        </div>
-      </dl>
+      <h2 id="stack-heading" tabindex="-1">Stack</h2>
     </div>
+    <div class="screen-body" role="region" aria-label="Stack" tabindex="0">
+      <div class="container">
+        <dl class="stack-list">
+          <div class="stack-row">
+            <dt>Languages</dt>
+            <dd>
+              <span class="tag">TypeScript</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Python</span>
+              <span class="tag">Java</span>
+            </dd>
+          </div>
+          <div class="stack-row">
+            <dt>Frontend</dt>
+            <dd>
+              <span class="tag">React</span>
+              <span class="tag">Next</span>
+              <span class="tag">Tailwind</span>
+            </dd>
+          </div>
+          <div class="stack-row">
+            <dt>Backend</dt>
+            <dd>
+              <span class="tag">Express</span>
+            </dd>
+          </div>
+          <div class="stack-row">
+            <dt>Data-Ops</dt>
+            <dd>
+              <span class="tag">MongoDB</span>
+              <span class="tag">Redis</span>
+              <span class="tag">Bun</span>
+              <span class="tag">Docker</span>
+              <span class="tag">GitHub Actions</span>
+            </dd>
+          </div>
+          <div class="stack-row">
+            <dt>Cloud</dt>
+            <dd>
+              <span class="tag">AWS</span>
+              <span class="tag">Netlify</span>
+              <span class="tag">Render</span>
+            </dd>
+          </div>
+          <div class="stack-row">
+            <dt>AI</dt>
+            <dd>
+              <span class="tag">Claude Code</span>
+              <span class="tag">Cursor</span>
+              <span class="tag">MCP</span>
+              <span class="tag">Agentic workflows</span>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+    <span class="more-cursor blink" aria-hidden="true">&#9660;</span>
   </section>
 </main>
 
-<footer class="site-footer" id="contact" aria-labelledby="contact-heading">
-  <div class="container footer-main">
+<footer class="site-footer screen" id="contact" aria-labelledby="contact-heading">
+  <div class="container screen-head">
     <span class="eyebrow">05 — Contact</span>
-    <h2 id="contact-heading" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Contact</h2>
-    <a class="footer-email" href="mailto:shubhampaithankar65@gmail.com">shubhampaithankar65@gmail.com</a>
-    <div class="footer-links">
-      <a class="link-inline ext" href="https://github.com/shubhampaithankar" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a class="link-inline ext" href="https://linkedin.com/in/shubham-paithankar/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <a class="link-inline" href="/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+    <h2 id="contact-heading" tabindex="-1" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Contact</h2>
+  </div>
+  <div class="screen-body" role="region" aria-label="Contact" tabindex="0">
+    <div class="container">
+      <a class="footer-email" href="mailto:shubhampaithankar65@gmail.com">shubhampaithankar65@gmail.com</a>
+      <div class="footer-links">
+        <a class="link-inline ext" href="https://github.com/shubhampaithankar" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a class="link-inline ext" href="https://linkedin.com/in/shubham-paithankar/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="link-inline" href="/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+      </div>
+      <p class="footer-off-hours">Off hours: homelab (Raspberry Pi, mini PCs, servers, VPSes), <a class="link-inline ext" href="https://open.spotify.com/artist/0W0ppqkx112oplGcz4Ab1d" target="_blank" rel="noopener noreferrer">making music</a>, cars and bikes, games, movies and anime, reading, fitness.</p>
+      <div class="footer-bottom">
+        <span>&copy; 2026</span>
+        <a href="https://github.com/shubhampaithankar/shubhampaithankar.github.io" target="_blank" rel="noopener noreferrer">Source &#8599;</a>
+      </div>
     </div>
-    <p class="footer-off-hours">Off hours: homelab (Pi-hole on a Raspberry Pi), reading, fitness, instruments, esports.</p>
   </div>
-  <div class="container footer-bottom">
-    <span>&copy; 2026</span>
-    <a href="https://github.com/shubhampaithankar/shubhampaithankar.github.io" target="_blank" rel="noopener noreferrer">Source &#8599;</a>
-  </div>
+  <span class="more-cursor blink" aria-hidden="true">&#9660;</span>
 </footer>
 
 <script src="assets/htmx.min.js"></script>
@@ -299,15 +323,59 @@
       } catch (e) {}
       reflect();
     });
+  })();
 
-    var nav = document.getElementById("site-nav");
-    window.addEventListener(
-      "scroll",
-      function () {
-        nav.classList.toggle("is-scrolled", window.scrollY > 4);
-      },
-      { passive: true }
-    );
+  // Screen controller: hash-driven screen switching, nav aria-current, focus
+  // management, and the MORE scroll indicator. ~55 lines, no library.
+  (function () {
+    var ids = ["top", "work", "projects", "stack", "contact"];
+    var screens = {};
+    ids.forEach(function (id) {
+      var el = id === "top" ? document.querySelector(".hero") : document.getElementById(id);
+      screens[id] = { el: el, heading: el.querySelector("h1, h2"), body: el.querySelector(".screen-body") };
+    });
+    var navLinks = document.querySelectorAll(".nav-links a");
+    var skipLink = document.querySelector(".skip-link");
+    var root = document.documentElement;
+
+    function currentId() {
+      var id = location.hash.slice(1) || "top";
+      return screens[id] ? id : "top";
+    }
+
+    function updateMore(id) {
+      var body = screens[id].body;
+      if (!body) return;
+      var canScroll = body.scrollHeight - body.scrollTop - body.clientHeight > 1;
+      screens[id].el.classList.toggle("has-more", canScroll);
+    }
+
+    function activate(id, moveFocus) {
+      ids.forEach(function (key) {
+        screens[key].el.classList.toggle("is-active", key === id);
+      });
+      navLinks.forEach(function (link) {
+        var isCurrent = link.getAttribute("href") === "#" + id;
+        if (isCurrent) link.setAttribute("aria-current", "page");
+        else link.removeAttribute("aria-current");
+      });
+      root.dataset.screen = id;
+      var heading = screens[id].heading;
+      // Only on a real switch. Focusing on first paint would yank focus off the
+      // document start before the visitor has done anything.
+      if (moveFocus) heading.focus({ preventScroll: true });
+      skipLink.href = "#" + heading.id;
+      updateMore(id);
+    }
+
+    ids.forEach(function (id) {
+      if (screens[id].body) screens[id].body.addEventListener("scroll", function () { updateMore(id); }, { passive: true });
+    });
+    window.addEventListener("hashchange", function () { activate(currentId(), true); });
+    window.addEventListener("resize", function () { updateMore(currentId()); });
+    document.body.addEventListener("htmx:afterSettle", function () { updateMore(currentId()); });
+
+    activate(currentId());
   })();
 </script>
 </body>

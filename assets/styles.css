@@ -1,38 +1,21 @@
 /* ==========================================================================
-   Portfolio — "Engineering datasheet"
+   Portfolio — "16-bit game UI, title screen and quest log"
    Per DESIGN.md. Hand-rolled, no framework.
    ========================================================================== */
 
-/* ---- Fonts (self-hosted, latin subset) ---- */
+/* ---- Fonts (self-hosted, latin subsets) ---- */
 @font-face {
-  font-family: "IBM Plex Sans";
+  /* Chakra Petch fallback metrics tuned against Arial Narrow so the h1/h2
+     box does not shift (zero CLS). */
+  font-family: "Chakra Petch";
   font-style: normal;
-  font-weight: 400;
+  font-weight: 700;
   font-display: swap;
-  src: url("fonts/ibm-plex-sans-400.woff2") format("woff2");
-  size-adjust: 100.6%;
-  ascent-override: 92%;
-  descent-override: 25%;
-}
-@font-face {
-  font-family: "IBM Plex Sans";
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("fonts/ibm-plex-sans-500.woff2") format("woff2");
-  size-adjust: 100.6%;
-  ascent-override: 92%;
-  descent-override: 25%;
-}
-@font-face {
-  font-family: "IBM Plex Sans Condensed";
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url("fonts/ibm-plex-sans-condensed-600.woff2") format("woff2");
-  size-adjust: 96%;
-  ascent-override: 95%;
-  descent-override: 25%;
+  src: url("fonts/chakra-petch-700.woff2") format("woff2");
+  size-adjust: 98%;
+  ascent-override: 100%;
+  descent-override: 26%;
+  line-gap-override: 0%;
 }
 @font-face {
   font-family: "IBM Plex Mono";
@@ -59,31 +42,32 @@
 :root {
   color-scheme: light dark;
 
-  --surface-base: #f4f5f6;
-  --surface-raised: #ffffff;
-  --surface-sunken: #e9ebed;
-  --rule: #d6dade;
-  --rule-strong: #b4bac1;
-  --ink-primary: #16181c;
-  --ink-secondary: #4a5058;
-  --ink-muted: #5a616b;
-  --accent: #9a5b00;
-  --accent-graphic: #c97a0a;
-  --accent-wash: #f5e9d6;
-  --accent-contrast: #ffffff;
+  --surface-base: #ede6d5;
+  --px-checker: #e5ddc6;
+  --surface-raised: #faf6ea;
+  --surface-sunken: #dfd5bc;
+  --frame: #26201a;
+  --ink-primary: #26201a;
+  --ink-secondary: #52483a;
+  --ink-muted: #60533f;
+  --accent: #a2263e;
+  --accent-2: #29366f;
+  --accent-wash: #f4dfd2;
+  --sky-tile: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAACACAYAAAA27Cg+AAAAW0lEQVR42u3MMQqAQAxE0dz/Zl7AymoRxEIQVrCMJH2mD/5iyEAeY8t6u4oBAIBfg21/vLqmnrkQRQUAAHQG45heXVPPXIiiAgAAOoPzer26pp65EEUFAAA0BR+5q8bjE7pjoAAAAABJRU5ErkJggg==");
+  --starfield-tile: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAQUlEQVR42u3asQ0AIBACwF/aMd2G/u2tNVrcjUBDSKgC+FDP0VIA4KEkqggAALBlAAAAANg4NgEAAAC3eH4AcMYCnHMSEtQjXd4AAAAASUVORK5CYII=");
+  --starfield-display: none;
 
-  --font-display: "IBM Plex Sans Condensed", sans-serif;
-  --font-body: "IBM Plex Sans", sans-serif;
+  --font-display: "Chakra Petch", "Arial Narrow", Arial, sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
 
-  --t-hero: clamp(2.5rem, 9vw, 5rem);
-  --t-h2: clamp(1.5rem, 3vw, 2.125rem);
-  --t-h3: clamp(1.125rem, 1.5vw, 1.25rem);
-  --t-body: clamp(1rem, 0.6vw, 1.0625rem);
-  --t-lead: clamp(1.125rem, 1.6vw, 1.375rem);
-  --t-small: 0.875rem;
-  --t-label: 0.75rem;
-  --t-data: 0.8125rem;
+  --t-hero: 34px;
+  --t-h2: 22px;
+  --t-h3: 18px;
+  --t-body: 16px;
+  --t-lead: 18px;
+  --t-small: 14px;
+  --t-label: 12px;
+  --t-data: 13px;
 
   --sp-1: 4px;
   --sp-2: 8px;
@@ -96,63 +80,85 @@
   --sp-9: 96px;
   --sp-10: 128px;
 
-  --r-sm: 2px;
-  --r-md: 3px;
-
-  --dur-fast: 120ms;
-  --dur-slow: 600ms;
-  --ease: cubic-bezier(0.2, 0, 0, 1);
+  --dur-step: 400ms;
+}
+@media (min-width: 480px) {
+  :root {
+    --t-hero: 44px;
+  }
+}
+@media (min-width: 768px) {
+  :root {
+    --t-hero: 56px;
+    --t-h2: 28px;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --surface-base: #101215;
-    --surface-raised: #16191d;
-    --surface-sunken: #0a0c0e;
-    --rule: #2a2f36;
-    --rule-strong: #3c434c;
-    --ink-primary: #e8eaed;
-    --ink-secondary: #b0b6be;
-    --ink-muted: #868e99;
-    --accent: #e9a23b;
-    --accent-graphic: #e9a23b;
-    --accent-wash: #241c0e;
-    --accent-contrast: #101215;
+    --surface-base: #17131f;
+    --px-checker: #211c2e;
+    --surface-raised: #272141;
+    --surface-sunken: #17131f;
+    --frame: #f4f2ed;
+    --ink-primary: #f4f2ed;
+    --ink-secondary: #aca5c4;
+    --ink-muted: #9a92b5;
+    --accent: #ffcd75;
+    --accent-2: #73eff7;
+    --accent-wash: #2a2440;
+    --sky-tile: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAACACAYAAAA27Cg+AAAAW0lEQVR42u3MMQqAQAxE0dxBK9lGsRDZQ4j3v1Mk6TN98BdDBvIYW9bdVQwAAPwabGN6dU09cyGKCgAA6AyO6/XqmnrmQhQVAADQGdzn49U19cyFKCoAAKAp+ACtiL4cgSPRXQAAAABJRU5ErkJggg==");
+    --starfield-display: block;
   }
 }
 :root[data-theme="dark"] {
-  --surface-base: #101215;
-  --surface-raised: #16191d;
-  --surface-sunken: #0a0c0e;
-  --rule: #2a2f36;
-  --rule-strong: #3c434c;
-  --ink-primary: #e8eaed;
-  --ink-secondary: #b0b6be;
-  --ink-muted: #868e99;
-  --accent: #e9a23b;
-  --accent-graphic: #e9a23b;
-  --accent-wash: #241c0e;
-  --accent-contrast: #101215;
+  --surface-base: #17131f;
+  --px-checker: #211c2e;
+  --surface-raised: #272141;
+  --surface-sunken: #17131f;
+  --frame: #f4f2ed;
+  --ink-primary: #f4f2ed;
+  --ink-secondary: #aca5c4;
+  --ink-muted: #9a92b5;
+  --accent: #ffcd75;
+  --accent-2: #73eff7;
+  --accent-wash: #2a2440;
+  --sky-tile: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAACACAYAAAA27Cg+AAAAW0lEQVR42u3MMQqAQAxE0dxBK9lGsRDZQ4j3v1Mk6TN98BdDBvIYW9bdVQwAAPwabGN6dU09cyGKCgAA6AyO6/XqmnrmQhQVAADQGdzn49U19cyFKCoAAKAp+ACtiL4cgSPRXQAAAABJRU5ErkJggg==");
+  --starfield-display: block;
 }
 :root[data-theme="light"] {
-  --surface-base: #f4f5f6;
-  --surface-raised: #ffffff;
-  --surface-sunken: #e9ebed;
-  --rule: #d6dade;
-  --rule-strong: #b4bac1;
-  --ink-primary: #16181c;
-  --ink-secondary: #4a5058;
-  --ink-muted: #5a616b;
-  --accent: #9a5b00;
-  --accent-graphic: #c97a0a;
-  --accent-wash: #f5e9d6;
-  --accent-contrast: #ffffff;
+  --surface-base: #ede6d5;
+  --px-checker: #e5ddc6;
+  --surface-raised: #faf6ea;
+  --surface-sunken: #dfd5bc;
+  --frame: #26201a;
+  --ink-primary: #26201a;
+  --ink-secondary: #52483a;
+  --ink-muted: #60533f;
+  --accent: #a2263e;
+  --accent-2: #29366f;
+  --accent-wash: #f4dfd2;
+  --sky-tile: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAACACAYAAAA27Cg+AAAAW0lEQVR42u3MMQqAQAxE0dz/Zl7AymoRxEIQVrCMJH2mD/5iyEAeY8t6u4oBAIBfg21/vLqmnrkQRQUAAHQG45heXVPPXIiiAgAAOoPzer26pp65EEUFAAA0BR+5q8bjE7pjoAAAAABJRU5ErkJggg==");
+  --starfield-display: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 1ms !important;
     transition-duration: 1ms !important;
+  }
+  .blink {
+    animation: none;
+    opacity: 1;
+  }
+  .hero h1,
+  .hero .lead,
+  .hero .cta-row {
+    animation: none;
+    opacity: 1;
+  }
+  .details-link.htmx-request::after {
+    animation: none;
   }
 }
 
@@ -167,12 +173,13 @@ html {
 }
 body {
   margin: 0;
-  background: var(--surface-base);
+  background:
+    repeating-conic-gradient(var(--px-checker) 0% 25%, transparent 0% 50%) 0 0 / 8px 8px,
+    var(--surface-base);
   color: var(--ink-primary);
-  font-family: var(--font-body);
+  font-family: var(--font-mono);
   font-size: var(--t-body);
-  line-height: 1.6;
-  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+  line-height: 1.7;
 }
 img {
   max-width: 100%;
@@ -204,6 +211,105 @@ button {
   cursor: pointer;
 }
 
+/* ---- Screen system ----
+   Gate class lands only via the head bootstrap script. Without it, the
+   .screen elements are plain sections/footer and the page is the full
+   scrolling document (the no-JS fallback). */
+html.screens,
+html.screens body {
+  height: 100%;
+  overflow: hidden;
+}
+html.screens body {
+  display: grid;
+  grid-template-rows: 56px 1fr;
+  grid-template-columns: minmax(0, 1fr);
+}
+html.screens main {
+  /* Unboxes <main> so its 4 screen children place directly into body's
+     grid row 2, alongside the sibling <footer> screen. */
+  display: contents;
+}
+html.screens .screen {
+  display: none;
+  grid-row: 2;
+  min-height: 0;
+}
+html.screens .screen.is-active {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: 0;
+  animation: px-settle 120ms steps(1, end);
+}
+html.screens .hero.screen.is-active {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+html.screens .screen-body {
+  overflow-y: auto;
+  min-height: 0;
+}
+/* Pre-JS-paint initial screen: the head bootstrap stamps data-screen on
+   <html> from location.hash before body exists, so this is the only way to
+   show the right screen on first paint. The footer script takes over via
+   .is-active on load and every hashchange after that. */
+html.screens[data-screen="top"] .hero,
+html.screens[data-screen="work"] #work,
+html.screens[data-screen="projects"] #projects,
+html.screens[data-screen="stack"] #stack,
+html.screens[data-screen="contact"] #contact {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: 0;
+}
+html.screens[data-screen="top"] .hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.screen {
+  position: relative;
+}
+.screen-head {
+  padding-top: var(--sp-5);
+}
+@media (min-width: 768px) {
+  .screen-head {
+    padding-top: var(--sp-7);
+  }
+}
+.screen-body {
+  padding-bottom: var(--sp-5);
+}
+@media (min-width: 768px) {
+  .screen-body {
+    padding-bottom: var(--sp-7);
+  }
+}
+html:not(.screens) .screen {
+  scroll-margin-top: 72px;
+}
+html:not(.screens) main .screen + .screen {
+  border-top: 2px dashed var(--ink-muted);
+}
+
+/* MORE cursor: shown by JS only while the active .screen-body can still
+   scroll further down. Pinned to the screen frame, not the scroll region,
+   so it never scrolls away with the content. */
+.more-cursor {
+  display: none;
+  position: absolute;
+  left: 50%;
+  bottom: var(--sp-3);
+  transform: translateX(-50%);
+  font-size: 20px;
+  pointer-events: none;
+}
+html.screens .screen.has-more .more-cursor {
+  display: block;
+}
+
 /* ---- Skip link ---- */
 .skip-link {
   position: absolute;
@@ -213,11 +319,9 @@ button {
   background: var(--ink-primary);
   color: var(--surface-base);
   padding: var(--sp-2) var(--sp-4);
-  border-radius: var(--r-md);
   font-family: var(--font-mono);
   font-size: var(--t-label);
   text-decoration: none;
-  transition: top var(--dur-fast) var(--ease);
 }
 .skip-link:focus {
   top: var(--sp-4);
@@ -225,10 +329,15 @@ button {
 
 /* ---- Focus ---- */
 a:focus-visible,
-button:focus-visible {
-  outline: 2px solid var(--accent-graphic);
-  outline-offset: 3px;
-  border-radius: var(--r-sm);
+button:focus-visible,
+.screen-body:focus-visible {
+  outline: 2px solid var(--accent-2);
+  outline-offset: 2px;
+}
+/* Screen headings are focus targets on switch, never Tab stops. The move is for
+   screen readers; a visible ring on a non-interactive heading reads as a bug. */
+[tabindex="-1"]:focus {
+  outline: none;
 }
 
 /* ---- Layout primitives ---- */
@@ -243,18 +352,6 @@ button:focus-visible {
     padding-inline: var(--sp-6);
   }
 }
-main section {
-  padding-block: var(--sp-8);
-  scroll-margin-top: 72px;
-}
-@media (min-width: 768px) {
-  main section {
-    padding-block: var(--sp-10);
-  }
-}
-main section + section {
-  border-top: 1px solid var(--rule);
-}
 
 .eyebrow {
   display: block;
@@ -267,9 +364,13 @@ main section + section {
   margin-bottom: var(--sp-3);
 }
 
-main section h2 {
+main section h2,
+.site-footer h2 {
   font-family: var(--font-display);
   font-size: var(--t-h2);
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
   margin-bottom: var(--sp-6);
 }
 
@@ -277,6 +378,10 @@ h1,
 h2,
 h3 {
   font-weight: 600;
+}
+h3 {
+  font-family: var(--font-mono);
+  font-weight: 500;
 }
 
 /* ---- Nav ---- */
@@ -287,14 +392,8 @@ h3 {
   height: 56px;
   display: flex;
   align-items: center;
-  background: color-mix(in srgb, var(--surface-raised) 92%, transparent);
-  backdrop-filter: saturate(1.4);
-  -webkit-backdrop-filter: saturate(1.4);
-  border-bottom: 1px solid transparent;
-  transition: border-color var(--dur-fast) var(--ease);
-}
-.site-nav.is-scrolled {
-  border-bottom-color: var(--rule);
+  background: var(--surface-raised);
+  border-bottom: 2px solid var(--frame);
 }
 .site-nav .container {
   display: flex;
@@ -304,24 +403,22 @@ h3 {
   width: 100%;
 }
 .wordmark {
-  font-family: var(--font-mono);
-  font-weight: 500;
-  font-size: var(--t-data);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: var(--sp-2);
-}
-.wordmark::after {
-  content: "";
-  width: 20px;
-  height: 2px;
-  background: var(--accent-graphic);
-  display: inline-block;
+  justify-content: center;
+  padding: 6px 8px;
+  border: 2px solid var(--frame);
+  color: var(--ink-primary);
 }
 .nav-links {
   display: flex;
-  gap: var(--sp-5);
+  gap: var(--sp-4);
   overflow-x: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -339,13 +436,36 @@ h3 {
   padding-bottom: 2px;
   border-bottom: 2px solid transparent;
 }
+.nav-icon { display: none; width: 16px; height: 16px; }
 .nav-links a:hover {
   color: var(--accent);
 }
-.nav-links a:target,
-.nav-links a.is-active {
+.nav-links a[aria-current="page"] {
   color: var(--accent);
   border-bottom-color: var(--accent);
+}
+@media (max-width: 479px) {
+  .site-nav .container { gap: var(--sp-3); }
+  .nav-links { gap: var(--sp-2); }
+}
+@media (max-width: 359px) {
+  .nav-links { gap: var(--sp-1); }
+  .nav-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding-bottom: 0;
+  }
+  .nav-icon { display: block; }
+  .nav-links .nav-label {
+    position: absolute;
+    width: 1px; height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+  }
 }
 .nav-actions {
   display: flex;
@@ -359,12 +479,11 @@ h3 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--r-md);
-  border: 1px solid var(--rule);
+  border: 2px solid var(--frame);
   flex: none;
 }
 .theme-toggle:hover {
-  border-color: var(--rule-strong);
+  border-color: var(--accent-2);
 }
 .theme-toggle svg {
   width: 16px;
@@ -394,31 +513,56 @@ h3 {
   }
 }
 
-/* ---- Hero ---- */
+/* ---- Hero (title screen) ---- */
 .hero {
-  padding-block: var(--sp-8);
-  min-height: 40vh;
+  position: relative;
+  overflow: hidden;
+  padding-block: var(--sp-5);
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-image: var(--sky-tile);
+  background-repeat: repeat-x;
+  background-position: top;
+  background-size: 32px 512px;
+  background-color: var(--surface-base);
+  image-rendering: pixelated;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: var(--starfield-display);
+  pointer-events: none;
+  background-image: var(--starfield-tile);
+  background-repeat: repeat;
+  background-size: 256px 256px;
+  image-rendering: pixelated;
+}
+.hero .container {
+  z-index: 1;
 }
 @media (min-width: 768px) {
   .hero {
-    padding-block: var(--sp-10);
+    padding-block: var(--sp-7);
   }
 }
 .hero h1 {
   font-family: var(--font-display);
   font-size: var(--t-hero);
-  line-height: 0.98;
-  letter-spacing: -0.015em;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
   max-width: 14ch;
+  animation: px-boot-in var(--dur-step) steps(1, end) 200ms both;
 }
 .hero .lead {
   font-size: var(--t-lead);
   color: var(--ink-secondary);
   max-width: 56ch;
   margin-top: var(--sp-5);
+  animation: px-boot-in var(--dur-step) steps(1, end) 200ms both;
 }
 .cta-row {
   display: flex;
@@ -426,45 +570,48 @@ h3 {
   align-items: center;
   gap: var(--sp-4);
   margin-top: var(--sp-6);
+  animation: px-boot-in var(--dur-step) steps(1, end) 400ms both;
+}
+@keyframes px-boot-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 .btn {
   display: inline-flex;
   align-items: center;
   gap: var(--sp-2);
-  padding: 12px 20px;
-  border-radius: var(--r-md);
-  font-family: var(--font-mono);
-  font-size: var(--t-label);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease),
-    border-color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
-}
-.btn-primary {
-  background: var(--ink-primary);
-  color: var(--surface-base);
-  border: 1px solid var(--ink-primary);
-}
-.btn-primary:hover {
   background: var(--accent);
-  border-color: var(--accent);
-  color: var(--accent-contrast);
+  color: var(--surface-base);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  border: 0;
+  margin: 2px;
+  padding: 14px 20px;
+  box-shadow:
+    -2px 0 0 0 var(--frame),
+    2px 0 0 0 var(--frame),
+    0 -2px 0 0 var(--frame),
+    0 2px 0 0 var(--frame),
+    inset 2px 2px 0 0 rgb(255 255 255 / 0.45),
+    inset -2px -2px 0 0 rgb(0 0 0 / 0.35);
 }
-.btn-primary:active {
-  transform: translateY(1px);
-}
-.btn-secondary {
-  background: transparent;
-  border: 1px solid var(--rule-strong);
-  color: var(--ink-primary);
-}
-.btn-secondary:hover {
-  border-color: var(--accent);
-  background: var(--accent-wash);
-}
-.btn-secondary:active {
-  transform: translateY(1px);
+.btn:active {
+  transform: translateY(2px);
+  box-shadow:
+    -2px 0 0 0 var(--frame),
+    2px 0 0 0 var(--frame),
+    0 -2px 0 0 var(--frame),
+    0 2px 0 0 var(--frame),
+    inset -2px -2px 0 0 rgb(255 255 255 / 0.45),
+    inset 2px 2px 0 0 rgb(0 0 0 / 0.35);
 }
 .link-row {
   display: flex;
@@ -472,16 +619,15 @@ h3 {
   gap: var(--sp-5);
 }
 .link-inline {
+  color: var(--accent);
   text-decoration: underline;
-  text-decoration-color: var(--rule-strong);
-  text-underline-offset: 3px;
-  text-decoration-thickness: 1px;
-  transition: text-decoration-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
-}
-.link-inline:hover {
   text-decoration-color: var(--accent);
   text-decoration-thickness: 2px;
-  color: var(--accent);
+  text-underline-offset: 3px;
+}
+.link-inline:hover {
+  color: var(--accent-2);
+  text-decoration-color: var(--accent-2);
 }
 .ext::after {
   content: "↗";
@@ -504,27 +650,46 @@ h3 {
 .availability-dot {
   width: 8px;
   height: 8px;
-  border-radius: 50%;
-  background: var(--accent);
+  background: var(--accent-2);
   flex: none;
 }
 .availability .sep {
-  color: var(--rule-strong);
+  color: var(--ink-muted);
+}
+.blink {
+  color: var(--accent-2);
+  margin-left: var(--sp-1);
+  animation: px-blink 1s step-end infinite;
+}
+@keyframes px-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
 }
 
-/* ---- Work / year rule ---- */
+/* ---- Work / quest-log track ---- */
 .work-layout {
   position: relative;
 }
 .year-rule {
   display: none;
 }
-/* ponytail: 900px = 680px column + 72px gutter fits; below that the rule would clip */
+/* ponytail: year-rule ticks are visually-plausible approximations aligned
+   to card order, not JS-measured pixel positions; upgrade to a subgrid +
+   computed offsets if literal date-accuracy is ever required */
 @media (min-width: 900px) {
+  .work-layout {
+    padding-left: 72px;
+  }
   .year-rule {
     display: block;
     position: absolute;
-    left: -72px;
+    left: 0;
     top: 0;
     bottom: 0;
     width: 56px;
@@ -535,41 +700,21 @@ h3 {
   left: 24px;
   top: 0;
   bottom: 0;
-  width: 1px;
-  background: repeating-linear-gradient(
-    to bottom,
-    var(--rule-strong) 0,
-    var(--rule-strong) 1px,
-    transparent 1px,
-    transparent 8px
-  );
-  transform-origin: top;
-  transform: scaleY(0);
-  animation: draw-rule var(--dur-slow) var(--ease) 200ms forwards;
-}
-@media (prefers-reduced-motion: reduce) {
-  .year-rule .rule-track {
-    animation: none;
-    transform: scaleY(1);
-  }
-}
-@keyframes draw-rule {
-  to {
-    transform: scaleY(1);
-  }
+  width: 0;
+  border-left: 2px dashed var(--ink-muted);
 }
 .year-rule .tick {
   position: absolute;
-  left: 12px;
-  width: 25px;
-  height: 1px;
-  background: var(--rule-strong);
+  left: 22px;
+  width: 4px;
+  height: 4px;
+  background: var(--ink-muted);
 }
 .year-rule .tick.tick-boundary {
-  background: var(--accent-graphic);
-  height: 2px;
-  width: 32px;
-  left: 8px;
+  background: var(--accent);
+  width: 8px;
+  height: 4px;
+  left: 20px;
 }
 .year-rule .tick-label {
   position: absolute;
@@ -590,17 +735,28 @@ h3 {
   flex-direction: column;
   gap: var(--sp-5);
 }
-.role-card {
+
+/* ---- Panel frame (role cards, project cards) ---- */
+.role-card,
+.project-card {
+  position: relative;
   background: var(--surface-raised);
-  border: 1px solid var(--rule);
-  border-radius: var(--r-md);
+  margin: 4px;
   padding: var(--sp-5);
+  box-shadow:
+    -4px 0 0 0 var(--frame),
+    4px 0 0 0 var(--frame),
+    0 -4px 0 0 var(--frame),
+    0 4px 0 0 var(--frame);
+  outline: 2px solid var(--frame);
+  outline-offset: -8px;
+}
+.role-card {
   display: grid;
   gap: var(--sp-4);
 }
 .role-card.is-current {
   background: var(--accent-wash);
-  border-color: var(--rule-strong);
 }
 .role-head {
   display: flex;
@@ -609,13 +765,9 @@ h3 {
   gap: var(--sp-3);
   margin-bottom: 0;
 }
-.role-head h3 {
-  font-family: var(--font-body);
-}
 .role-dot {
   width: 6px;
   height: 6px;
-  border-radius: 50%;
   background: var(--accent);
   flex: none;
 }
@@ -649,7 +801,7 @@ h3 {
   top: 0.65em;
   width: 5px;
   height: 1px;
-  background: var(--rule-strong);
+  background: var(--ink-muted);
 }
 .details-link {
   display: inline-flex;
@@ -666,6 +818,31 @@ h3 {
 .details-link:hover {
   border-bottom-color: var(--accent);
 }
+.details-link.htmx-request::after {
+  content: "...";
+  display: inline-block;
+  width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: bottom;
+  animation: px-dots var(--dur-step) steps(3, end) infinite;
+}
+@keyframes px-dots {
+  to {
+    width: 1.5ch;
+  }
+}
+.role-details.htmx-settling {
+  animation: px-settle 120ms steps(1, end);
+}
+@keyframes px-settle {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 .sub-roles {
   display: flex;
   flex-direction: column;
@@ -674,7 +851,7 @@ h3 {
 }
 .sub-role {
   padding-left: var(--sp-4);
-  border-left: 2px solid var(--rule);
+  border-left: 2px solid var(--ink-muted);
 }
 .sub-role .sub-role-title {
   font-family: var(--font-mono);
@@ -687,7 +864,7 @@ h3 {
   font-family: var(--font-mono);
   font-size: var(--t-data);
   color: var(--ink-muted);
-  border-left: 2px solid var(--rule);
+  border-left: 2px solid var(--ink-muted);
   padding-left: var(--sp-3);
   max-width: none;
   margin-top: 0;
@@ -704,17 +881,9 @@ h3 {
   grid-template-columns: 1fr;
   gap: var(--sp-5);
 }
-.project-card {
-  position: relative;
-  background: var(--surface-raised);
-  border: 1px solid var(--rule);
-  border-radius: var(--r-md);
-  padding: var(--sp-5);
-  transition: border-color var(--dur-fast) var(--ease);
-}
 @media (hover: hover) {
   .project-card:hover {
-    border-color: var(--rule-strong);
+    outline-color: var(--accent);
   }
 }
 .project-card h3 {
@@ -743,8 +912,7 @@ h3 {
   font-size: var(--t-label);
   letter-spacing: 0.04em;
   background: var(--surface-sunken);
-  border: 1px solid var(--rule);
-  border-radius: var(--r-sm);
+  border: 2px solid var(--ink-muted);
   padding: 3px 8px;
 }
 .project-links {
@@ -758,7 +926,7 @@ h3 {
   font-family: var(--font-mono);
   font-size: var(--t-data);
   text-decoration: underline;
-  text-decoration-color: var(--rule-strong);
+  text-decoration-color: var(--ink-muted);
   text-underline-offset: 3px;
 }
 .project-links a:hover {
@@ -777,7 +945,7 @@ h3 {
   grid-template-columns: 96px 1fr;
   gap: var(--sp-4);
   padding-block: var(--sp-3);
-  border-top: 1px solid var(--rule);
+  border-top: 2px dashed var(--ink-muted);
 }
 .stack-row:first-child {
   border-top: none;
@@ -795,24 +963,22 @@ h3 {
   gap: var(--sp-2);
 }
 
-/* ---- Footer ---- */
+/* ---- Footer / contact screen ---- */
 .site-footer {
   background: var(--surface-sunken);
-  border-top: 1px solid var(--rule);
+  border-top: 4px solid var(--frame);
 }
-.footer-main {
-  padding-block: var(--sp-8);
-}
-@media (min-width: 768px) {
-  .footer-main {
-    padding-block: var(--sp-10);
-  }
-}
+/* Plex Mono, not the display face: the email address set in Chakra Petch
+   at this size blows the page out horizontally below ~640px. */
 .footer-email {
-  font-family: var(--font-display);
-  font-size: var(--t-h2);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.5;
   text-decoration: none;
   display: inline-block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 .footer-email:hover {
   color: var(--accent);
@@ -829,8 +995,20 @@ h3 {
   font-size: var(--t-small);
   max-width: 56ch;
 }
+/* In screens mode the contact screen is a full viewport frame, so the copyright
+   line is pinned to its bottom edge instead of trailing the content and leaving
+   dead space below. The scroll region is a column flex for exactly this. */
+html.screens #contact .screen-body > .container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+html.screens #contact .footer-bottom {
+  margin-top: auto;
+}
 .footer-bottom {
-  border-top: 1px solid var(--rule);
+  margin-top: var(--sp-6);
+  border-top: 2px dashed var(--ink-muted);
   padding-block: var(--sp-4);
   display: flex;
   flex-wrap: wrap;
@@ -842,7 +1020,7 @@ h3 {
 }
 .footer-bottom a {
   text-decoration: underline;
-  text-decoration-color: var(--rule-strong);
+  text-decoration-color: var(--ink-muted);
   text-underline-offset: 3px;
 }
 .footer-bottom a:hover {
